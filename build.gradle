@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+    id 'org.graalvm.buildtools.native' version '0.10.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+graalvmNative {
+    metadataRepository {
+        enabled = true
+    }
+    binaries {
+        main {
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(22)
+            }
+        }
+    }
+}
+
+
+dependencies {
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+mainClassName = 'Application'
